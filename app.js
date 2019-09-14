@@ -1,12 +1,17 @@
+// All Requires
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var mongoose = require("mongoose");
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+var booksRouter = require('./routes/users');
+// Connecting With Database
+mongoose.connect("mongodb://localhost/articleData",{useNewUrlParser:true},(err) => {
+    err ? console.log(err) : console.log("mongodb connected")
+});
+// Mounting The Express
 var app = express();
 
 // view engine setup
@@ -18,9 +23,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+// Providing The Path To Route Files
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/Books', booksRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
