@@ -1,5 +1,9 @@
+// Requring The Express
 var express = require('express');
+
+// Extracting The Router
 var router = express.Router();
+
 // Requring The Model Of Schema
 var Book = require("../Models/Books");
 
@@ -19,21 +23,21 @@ router.get("/read",(req,res,next) => {
   });
 });
 
-// Handling The Update Request
-router.put("/update/:id",(req,res,next) => {
+// Handling The Delete Request
+router.delete("delete/:id",(req,res,next) => {
   var id = req.params.id;
-  Book.findByIdAndUpdate(id, (err,Updated) => {
+  Book.findByIdAndDelete(id, (err,Deleted) => {
     if(err) return next(err);
-    res.json({message: "Updated SucessFully"});
+    res.json({message: "Deleted SucessFully"});
   });
 });
 
-// Handling The Delete Route
-router.delete("delete/:id",(req,res,next) => {
+// Handling The Update Request
+router.put("/update/:id",(req,res,next) => {
   var id = req.params.id;
-  Book.findOneAndDelete(id, (err,Deleted) => {
+  Book.findByIdAndUpdate(id,req.body,(err,Updated) => {
     if(err) return next(err);
-    res.json({message: "Deleted SucessFully"});
+    res.json({message: "Updated SucessFully"});
   });
 });
 

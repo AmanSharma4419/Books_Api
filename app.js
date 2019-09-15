@@ -5,7 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require("mongoose");
-var indexRouter = require('./routes/index');
+//var indexRouter = require('./routes/index');
 var booksRouter = require('./routes/users');
 // Connecting With Database
 mongoose.connect("mongodb://localhost/articleData",{useNewUrlParser:true},(err) => {
