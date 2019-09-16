@@ -24,7 +24,7 @@ router.get("/read",(req,res,next) => {
 });
 
 // Handling The Delete Request
-router.delete("delete/:id",(req,res,next) => {
+router.delete("/delete/:id",(req,res,next) => {
   var id = req.params.id;
   Book.findByIdAndDelete(id, (err,Deleted) => {
     if(err) return next(err);
