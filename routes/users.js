@@ -28,7 +28,7 @@ router.delete("/delete/:id",(req,res,next) => {
   var id = req.params.id;
   Book.findByIdAndDelete(id, (err,Deleted) => {
     if(err) return next(err);
-    res.json({message: "Deleted SucessFully"});
+    res.statusCode(200).json({message: "Deleted SucessFully"});
   });
 });
 
@@ -40,5 +40,5 @@ router.put("/update/:id",(req,res,next) => {
     res.json({message: "Updated SucessFully"});
   });
 });
-
+// Exporting The Routes
 module.exports = router;

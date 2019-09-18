@@ -11,7 +11,7 @@ var booksRouter = require('./routes/users');
 mongoose.connect("mongodb://localhost/articleData",{useNewUrlParser:true},(err) => {
     err ? console.log(err) : console.log("mongodb connected")
 });
-// Mounting The Express
+// Mounting The Express Application
 var app = express();
 
 // view engine setup
